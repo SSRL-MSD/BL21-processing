@@ -21,7 +21,7 @@ def find_directbeam(data_path, calib_name, plot=True):
     Find the direct beam position in the image
     Return the direct beam pixel as a list
     '''
-    i = 0
+    i = 50
     filename = data_path + calib_name + str(i).zfill(4) + ".raw"
     Z = read_RAW(filename)
     # plt.imshow(data, aspect='auto')
@@ -37,7 +37,7 @@ def find_directbeam(data_path, calib_name, plot=True):
 
     centerx = int(result.best_values['centerx'])
     centery = int(result.best_values['centery'])
-    print(centerx, centery)
+    print(f"Found beam center at ({centerx}, {centery})")
     
     if plot:
         # Plot the beam center
