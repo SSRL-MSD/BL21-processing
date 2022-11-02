@@ -252,12 +252,10 @@ def cart2sphere(map, data):
     tth_map = tth_map.reshape(data.shape)
     return tth_map%180.0
 
-def integrate(scan_number, folder, user, spec_name, stepsize, xyz_map, mult=1000000.0, plot_integration = True, plot_binning = True):
+def integrate(scan_number, image_path, spec_path, user, spec_name, stepsize, xyz_map, mult=1000000.0, plot_integration = True, plot_binning = True):
     '''
     Generate 1D data from 2D frames
     '''
-    image_path = folder + "images/"
-    spec_path = folder + "scans/"
 
     if np.isscalar(scan_number):
         scan_number = [scan_number]
@@ -308,17 +306,17 @@ def integrate(scan_number, folder, user, spec_name, stepsize, xyz_map, mult=1000
             outfile.write(str(interpbins[i]) + "\t" + str(mult * interpy[i]) + "\t" + str(np.sqrt(mult * interpy[i])) + "\n")
         outfile.close()
 
-        if plot_integration:
+        if plot_binning:
             plt.figure() #figsize=(20, 5))
             plt.plot(bins, digit_norm)
             #plt.savefig(outname[:-4] + ".pdf")
 
-        if plot_binning:
+        if plot_integration:
             plt.figure() #figsize=(20, 5))
             plt.plot(interpbins, interpy)
 
-        
         plt.show()
+    return interpbins, interpy
         
 def make_pixel_map(det_R, db_pixel):
     # Map each pixel into cartesian coordinates (x,y,z) in number of pixels from sample for direct beam conditions (2-theta = 0)
