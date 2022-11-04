@@ -1,4 +1,4 @@
-# Jupyter notebook for processing SSRL2-1 Pilatus 100K data
+# Jupyter notebook for processing SSRL BL2-1 Pilatus 100K data
 If this is not installed in the account you are using on the BL2-1 computer:
 
 Open anaconda prompt in the folder you want to run processing and run the following commands to create a conda environment with the necessary dependencies:
